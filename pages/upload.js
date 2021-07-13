@@ -16,7 +16,16 @@ export default function Upload() {
     const [session, loading] = useSession()
     console.log('session', session)
 
-    const uppy = new Uppy({ autoProceed: true, debug: true })
+    const uppy = new Uppy({
+        restrictions: {
+            maxFileSize: 300000,
+            maxNumberOfFiles: 1,
+            minNumberOfFiles: 1,
+            allowedFileTypes: ['image/*']
+        },
+        autoProceed: true,
+        debug: true
+    })
         .use(AwsS3, {
             limit: 2,
             timeout: 60 * 1000,
