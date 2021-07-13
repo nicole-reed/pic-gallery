@@ -15,10 +15,11 @@ a {
 body {
   font-family: -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, sans-serif, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
   padding: 0 1rem 1rem 1rem;
-  max-width: 680px;
+  text-align: center;
+  /* max-width: 680px; */
   margin: 0 auto;
-  background: #fff;
-  color: #333;
+  background: white;
+  color: black
 }
 
 li,
@@ -28,11 +29,15 @@ p {
 
 a {
   font-weight: 500;
+  color: black;
+  text-decoration: none;
 }
 
 hr {
   border: 1px solid #ddd;
 }
+
+
 
 iframe {
   background: #ccc;
@@ -41,4 +46,42 @@ iframe {
   width: 100%;
   border-radius: .5rem;
   filter: invert(1);
+}
+
+img {
+  height: auto;
+  max-width: 100%;
+}
+
+
+.my-masonry-grid {
+  /* display: -webkit-box; /* Not needed if autoprefixing */
+  /* display: -ms-flexbox; Not needed if autoprefixing  */
+  display: flex;
+  margin-left: -30px; /* gutter size offset */
+  width: auto;
+}
+.my-masonry-grid_column {
+  width: 200px;
+  padding-left: 30px; /* gutter size */
+  background-clip: padding-box;
+}
+
+/* Style your items */
+.my-masonry-grid_column > div { /* change div to reference your elements you put in <Masonry> */
+  width: 100%;
+  margin-bottom: 30px;
+}
+
+@media (max-width: 800px) {
+  .my-masonry-grid {
+    margin-left: -15px; /* gutter size offset */
+  }
+  .my-masonry-grid_column {
+    padding-left: 15px; /* gutter size offset */
+  }
+  .my-masonry-grid_column > div {
+    width: 100%;
+    margin-bottom: 15px; /* space between items */
+  }
 }

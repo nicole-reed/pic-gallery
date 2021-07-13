@@ -1,20 +1,67 @@
 import { Image } from '../../../../models/Image'
+import AWS from 'aws-sdk'
 import connectDB from '../../../../middleware/mongodb'
+import { Record, String, Optional, Union, Literal, ValidationError } from 'runtypes'
+
+AWS.config.update({
+    credentials: new AWS.Credentials({ accessKeyId: process.env.AWS_ACCESS_KEY, secretAccessKey: process.env.AWS_SECRET }),
+    region: 'us-east-1'
+})
+
+const s3 = new AWS.S3()
+
+const getImageRunType = Record({
+    query: Record({
+        id: String
+    })
+})
+
+const createImageRunType = Record({
+    query: Record({
+        id: String
+    }),
+    body: Record({
+        fileName: String,
+        contentType: String
+    })
+})
 
 const handler = async (req, res) => {
-    if (req.method === 'POST') {
+    if (req.method === 'GET') {
         try {
-            const { id } = req.query
-            const { fileName, contentType } = req.body
-            console.log(req.body)
+            const validatedRequest = getImageRunType.check(req)
+            const { id } = validatedRequest.query
 
-            const image = new Image({ userId: id, fileName, contentType })
-            console.log('image', image)
-            await image.save()
+            const images = await Image.find({ userId: id })
 
-            res.send(`successfully created image ${image.fileName}`)
+            const imagesWithUrls = images.map(image => {
+                const params = { Bucket: 'nicole-reed-gallery', Key: `${image.userId}/small-${image.fileName}` }
+                const signedUrl = s3.getSignedUrl('getObject', params)
+
+                const result = { userId: image.userId, fileName: image.fileName, _id: image._id, url: signedUrl }
+                return result
+            })
+
+            res.send({ images: imagesWithUrls })
         } catch (error) {
             console.log(error)
+            res.status(500).send(error.message)
+        }
+    } else if (req.method === 'POST') {
+        try {
+            console.log('inside POST users/id/images')
+            const validatedRequest = createImageRunType.check(req)
+            const { id } = validatedRequest.query
+            const { fileName, contentType } = validatedRequest.body
+
+            const image = new Image({ userId: id, fileName, contentType })
+
+            await image.save()
+
+            console.log('sucessfully saved image')
+            res.send({ message: `successfully created image ${image.fileName}` })
+        } catch (error) {
+            console.log('error saving image', error)
             res.status(500).send(error.message)
         }
 

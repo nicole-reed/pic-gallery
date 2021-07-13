@@ -1,15 +1,25 @@
 import Head from 'next/head'
 import Layout from '../components/layout'
+import React, { useEffect, useState } from 'react'
+import Images from '../components/Images'
 import axios from 'axios'
-import { signIn, signOut, useSession } from 'next-auth/client'
 
-export default function Home() {
-  const [session, loading] = useSession()
+export default function Image() {
 
-  // const getUrl = async () => {
-  //   const res = await axios.post('/api/signed-url', { type: 'getObject', key: 'test.jpeg' })
-  //   console.log('response', res)
-  // }
+  const [images, setImages] = useState([])
+
+  const getImages = async () => {
+    try {
+      const res = await axios.get('/api/images')
+
+      setImages(res.data.images)
+    } catch (error) {
+      console.log(error.message)
+    }
+  }
+  useEffect(() => {
+    getImages()
+  }, [])
 
   return (
     <div >
@@ -18,22 +28,16 @@ export default function Home() {
       </Head>
 
       <Layout>
-        {/* {!session && <>
-          Not signed in <br />
-          <button onClick={() => signIn()}>Sign in</button>
-        </>}
-        {session && <>
-          Signed in as {session.user.name} <br />
-          <button onClick={() => signOut()}>Sign out</button>
-        </>} */}
+
 
         <main>
           <h1>Welcome to the Gallery</h1>
+
         </main>
 
-        {/* <button onClick={getUrl}>Get url</button> */}
+        <Images images={images} setImages={setImages} />
 
       </Layout>
-    </div>
+    </div >
   )
 }

@@ -65,7 +65,7 @@
   position: relative;
   z-index: 10;
   background-color: transparent;
-  color: #555;
+  color: black;
 }
 
 .buttonPrimary {
@@ -84,6 +84,7 @@
   margin-bottom: 2rem;
   padding: 0;
   list-style: none;
+  text-decoration-color: white;
 }
 
 .navItem {

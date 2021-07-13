@@ -3,6 +3,9 @@ import Layout from '../components/layout'
 import { signIn, useSession } from 'next-auth/client'
 import Uppy from '@uppy/core'
 import AwsS3 from '@uppy/aws-s3'
+import { ProgressBar } from '@uppy/react'
+import '@uppy/core/dist/style.css'
+import '@uppy/progress-bar/dist/style.css'
 import axios from 'axios'
 import { DragDrop } from '@uppy/react'
 import '@uppy/core/dist/style.css'
@@ -31,7 +34,7 @@ export default function Upload() {
             }
         })
         .on('file-added', () => console.log('file added'))
-        .on('upload-success', () => console.log('upload success'))
+        .on('upload-success', async (file) => await axios.post(`/api/users/${session.user.id}/images`, { fileName: file.name, contentType: file.type }))
         .on('upload-error', (error) => console.log('upload error', error))
 
     return (
@@ -48,6 +51,11 @@ export default function Upload() {
                     {session && <>
                         Add new images to {session.user.name}
                         <DragDrop uppy={uppy} />
+                        <ProgressBar
+                            uppy={uppy}
+                            fixed
+                            hideAfterFinish
+                        />
                     </>}
                 </main>
 
