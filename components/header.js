@@ -50,6 +50,7 @@ export default function Header() {
                     </>}
                 </p>
             </div>
+
             <nav>
                 <ul className={styles.navItems}>
                     <li className={styles.navItem}><Link href="/"><a>Home</a></Link></li>

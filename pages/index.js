@@ -1,5 +1,5 @@
 import Head from 'next/head'
-import Layout from '../components/layout'
+import Layout from '../components/Layout'
 import React, { useEffect, useState } from 'react'
 import Images from '../components/Images'
 import axios from 'axios'
@@ -22,14 +22,12 @@ export default function Image() {
   }, [])
 
   return (
-    <div >
+    <div>
       <Head>
         <title>Gallery</title>
       </Head>
 
       <Layout>
-
-
         <main>
           <h1>Welcome to the Gallery</h1>
 

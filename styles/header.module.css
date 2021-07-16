@@ -14,7 +14,7 @@
   border-radius: 0 0 .6rem .6rem;
   padding: .6rem 1rem;
   margin: 0;
-  background-color: rgba(0,0,0,.05);
+  background-color: transparent;
   transition: all 0.2s ease-in;
 }
 
@@ -44,7 +44,7 @@
 
 .avatar {
   border-radius: 2rem;
-  float: left;
+  float: right;
   height: 2.8rem;
   width: 2.8rem;
   background-color: white;
@@ -65,13 +65,13 @@
   position: relative;
   z-index: 10;
   background-color: transparent;
-  color: black;
+  color:white;
 }
 
 .buttonPrimary {
   background-color: #346df1;
   border-color: #346df1;
-  color: #fff;
+  color:white;
   text-decoration: none;
   padding: .7rem 1.4rem;
 }
@@ -84,7 +84,7 @@
   margin-bottom: 2rem;
   padding: 0;
   list-style: none;
-  text-decoration-color: white;
+  color: rgb(250, 239, 239);
 }
 
 .navItem {

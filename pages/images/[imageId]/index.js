@@ -1,6 +1,6 @@
-import Head from 'next/head'
+
 import { useRouter } from 'next/router'
-import Layout from '../../../components/layout'
+import Layout from '../../../components/Layout'
 import React, { useEffect, useState } from 'react'
 import Image from '../../../components/Image'
 import axios from 'axios'
@@ -27,7 +27,9 @@ export default function fullImage() {
         <div >
             <Layout>
 
+
                 <Image image={image} />
+
             </Layout>
         </div >
     )

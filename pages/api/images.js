@@ -18,7 +18,7 @@ const handler = async (req, res) => {
                 const params = { Bucket: 'nicole-reed-gallery', Key: `${image.userId}/small-${image.fileName}` }
                 const signedUrl = s3.getSignedUrl('getObject', params)
 
-                const result = { userId: image.userId, fileName: image.fileName, _id: image._id, url: signedUrl }
+                const result = { userId: image.userId, fileName: image.fileName, _id: image._id, url: signedUrl, caption: image.caption }
                 return result
             })
 

@@ -9,6 +9,7 @@
   },
   "dependencies": {
     "@uppy/aws-s3": "^1.7.12",
+    "@uppy/dashboard": "^1.20.2",
     "@uppy/google-drive": "^1.7.2",
     "@uppy/react": "^1.12.0",
     "aws-sdk": "^2.940.0",
@@ -21,6 +22,8 @@
     "react-burger-menu": "^3.0.6",
     "react-dom": "17.0.2",
     "react-masonry-css": "^1.0.16",
-    "runtypes": "^6.3.1"
+    "runtypes": "^6.3.1",
+    "sharp": "^0.28.3",
+    "uppy-plugin-image-compressor": "^1.1.0"
   }
 }

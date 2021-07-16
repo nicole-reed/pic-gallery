@@ -1,6 +1,6 @@
 import Head from 'next/head'
 import Images from '../components/Images'
-import Layout from '../components/layout'
+import Layout from '../components/Layout'
 import { useSession } from 'next-auth/client'
 import React from 'react'
 import axios from 'axios'
@@ -31,12 +31,13 @@ export default function Profile() {
             <Layout>
 
                 <main>
-                    <h1>This is where all the pics will be.</h1>
+
                 </main>
                 {session && <>
-                    Images curated by: {session.user.name}
+                    <h2>Images curated by {session.user.name}</h2>
                 </>}
                 <Images images={images} setImages={setImages} />
+
             </Layout>
         </div>
     )

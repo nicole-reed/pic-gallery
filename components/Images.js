@@ -1,8 +1,9 @@
 import Image from './Image'
-import Link from 'next/link'
+import { useState } from 'react'
 import Masonry from 'react-masonry-css'
 
 const Images = ({ images }) => {
+
     const breakpoints = {
         default: 4,
         1100: 3,

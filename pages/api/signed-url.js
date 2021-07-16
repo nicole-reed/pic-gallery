@@ -22,9 +22,8 @@ const reqRunType = Record({
 
 const getSignedUrl = async (req, res) => {
     try {
-        console.log('req.body', req.body)
         if (req.method === 'POST') {
-
+            console.log('inside getSignedUrl')
             const token = await jwt.getToken({ req, secret })
             if (!token) {
                 return res.status(403).send('Forbidden')
