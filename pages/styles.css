@@ -18,7 +18,7 @@ body {
   font-weight: lighter;
   /* max-width: 680px; */
   margin: 5 auto;
-  background: linear-gradient(90deg, #20293b 0%, #0e1729 100%);
+  background: linear-gradient(90deg, #2d2d2e 0%, #050505 100%);
   /* background: rgb(32, 31, 56); */
   color: white;
 }
@@ -56,13 +56,26 @@ a:hover{
 
 .img-caption{
   position: absolute;
-  top: 90%;
-  left:10%;
+  bottom: 20px;
+  left: 15px;
   color: white;
   font-weight: bolder;
 }
 
+.download-btn{
+  border: none;
+  background: transparent;
+  color: white;
+  font-weight: lighter;
+  cursor: pointer;
+  padding-top: 15px;
+  padding-bottom: 15px;
+}
 
+.download-btn:hover{
+  color: grey;
+  transition: all 0.2s ease-in;
+}
 
 hr {
   border: 1px solid #ddd;
@@ -92,19 +105,19 @@ img {
   /* display: -webkit-box; /* Not needed if autoprefixing */
   /* display: -ms-flexbox; Not needed if autoprefixing  */
   display: flex;
-  margin-left: -30px; /* gutter size offset */
+  margin-left: -10px; /* gutter size offset */
   width: auto;
 }
 .my-masonry-grid_column {
   width: 200px;
-  padding-left: 30px; /* gutter size */
+  padding-left: 10px; /* gutter size */
   background-clip: padding-box;
 }
 
 /* Style your items */
 .my-masonry-grid_column > div { /* change div to reference your elements you put in <Masonry> */
   width: 100%;
-  margin-bottom: 30px;
+  margin-bottom: 7px;
 }
 
 @media (max-width: 800px) {

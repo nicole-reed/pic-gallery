@@ -29,11 +29,8 @@ export default function Image() {
 
       <Layout>
         <main>
-          <h1>Welcome to the Gallery</h1>
-
+          <Images images={images} setImages={setImages} />
         </main>
-
-        <Images images={images} setImages={setImages} />
 
       </Layout>
     </div >

@@ -16,10 +16,14 @@ const handler = async (req, res) => {
             const image = await Image.findOne({ _id: imageId })
             console.log('image', image)
 
-            const params = { Bucket: 'nicole-reed-gallery', Key: `${image.userId}/medium-${image.fileName}` }
-            const signedUrl = s3.getSignedUrl('getObject', params)
+            const mediumParams = { Bucket: 'nicole-reed-gallery', Key: `${image.userId}/medium-${image.fileName}` }
+            const mediumSignedUrl = s3.getSignedUrl('getObject', mediumParams)
 
-            res.send({ userId: image.userId, fileName: image.fileName, _id: image._id, url: signedUrl, caption: image.caption })
+
+            const fullParams = { Bucket: 'nicole-reed-gallery', Key: `${image.userId}/${image.fileName}` }
+            const fullSignedUrl = s3.getSignedUrl('getObject', fullParams)
+
+            res.send({ userId: image.userId, fileName: image.fileName, _id: image._id, url: mediumSignedUrl, caption: image.caption, fullUrl: fullSignedUrl })
         } catch (error) {
             console.log(error)
             res.status(500).send(error.message)

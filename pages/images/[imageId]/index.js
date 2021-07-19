@@ -23,13 +23,20 @@ export default function fullImage() {
     useEffect(() => {
         imageId && getImage()
     }, [imageId])
+
+    const downloadImage = () => {
+        window.open(image.fullUrl, { target: '_blank' })
+    }
+
     return (
         <div >
             <Layout>
+                <main>
+                    <Image image={image} />
+                </main>
 
 
-                <Image image={image} />
-
+                <button className='download-btn' onClick={downloadImage}>Download Full Quality Image</button>
             </Layout>
         </div >
     )
