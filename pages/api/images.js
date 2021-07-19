@@ -11,9 +11,10 @@ const s3 = new AWS.S3()
 
 const handler = async (req, res) => {
     if (req.method === 'GET') {
+        console.log('Entered the serverless function')
         try {
             const images = await Image.find()
-
+            console.log('connected to db')
             const imagesWithUrls = images.map(image => {
                 const params = { Bucket: 'nicole-reed-gallery', Key: `${image.userId}/small-${image.fileName}` }
                 const signedUrl = s3.getSignedUrl('getObject', params)
