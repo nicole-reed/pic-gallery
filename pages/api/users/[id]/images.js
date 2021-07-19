@@ -4,8 +4,8 @@ import connectDB from '../../../../middleware/mongodb'
 import { Record, String, Optional, Union, Literal, ValidationError } from 'runtypes'
 
 AWS.config.update({
-    credentials: new AWS.Credentials({ accessKeyId: process.env.AWS_ACCESS_KEY, secretAccessKey: process.env.AWS_SECRET }),
-    region: process.env.MY_AWS_REGION
+    credentials: new AWS.Credentials({ accessKeyId: process.env.MY_ACCESS_KEY, secretAccessKey: process.env.MY_SECRET }),
+    region: process.env.MY_REGION
 })
 
 const s3 = new AWS.S3()
