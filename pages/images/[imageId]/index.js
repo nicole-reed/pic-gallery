@@ -1,6 +1,6 @@
 
 import { useRouter } from 'next/router'
-import Layout from '../../../components/Layout'
+import Layout from '../../../components/layout'
 import React, { useEffect, useState } from 'react'
 import Image from '../../../components/Image'
 import axios from 'axios'

@@ -1,5 +1,5 @@
 import Head from 'next/head'
-import Layout from '../components/Layout'
+import Layout from '../components/layout'
 import { signIn, useSession } from 'next-auth/client'
 import Uppy from '@uppy/core'
 import AwsS3 from '@uppy/aws-s3'

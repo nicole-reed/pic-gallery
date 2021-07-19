@@ -1,6 +1,6 @@
 import Head from 'next/head'
 import Images from '../components/Images'
-import Layout from '../components/Layout'
+import Layout from '../components/layout'
 import { useSession } from 'next-auth/client'
 import React from 'react'
 import axios from 'axios'
