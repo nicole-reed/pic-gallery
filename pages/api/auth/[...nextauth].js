@@ -48,6 +48,11 @@ export default NextAuth({
     callbacks: {
         async session(session, user) {
             return { ...session, user: { ...session.user, id: user.sub } }
+        },
+        async redirect(url, baseUrl) {
+            return url.startsWith(baseUrl)
+                ? url
+                : baseUrl
         }
     }
 })
