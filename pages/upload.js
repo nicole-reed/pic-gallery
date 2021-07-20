@@ -3,14 +3,11 @@ import Layout from '../components/layout'
 import { signIn, useSession } from 'next-auth/client'
 import Uppy from '@uppy/core'
 import AwsS3 from '@uppy/aws-s3'
-import { ProgressBar } from '@uppy/react'
 import '@uppy/core/dist/style.css'
-// import '@uppy/progress-bar/dist/style.css'
 import '@uppy/dashboard/dist/style.css'
 import axios from 'axios'
-import { DragDrop, Dashboard } from '@uppy/react'
-import '@uppy/core/dist/style.css'
-// import '@uppy/drag-drop/dist/style.css'
+import { Dashboard } from '@uppy/react'
+
 
 
 export default function Upload() {
@@ -18,12 +15,6 @@ export default function Upload() {
     console.log('session', session)
 
     const uppy = new Uppy({
-        // restrictions: {
-        //     maxFileSize: 300000,
-        //     maxNumberOfFiles: 1,
-        //     minNumberOfFiles: 1,
-        //     allowedFileTypes: ['image/*']
-        // },
         autoProceed: false,
         debug: true
     })
@@ -64,12 +55,6 @@ export default function Upload() {
                     </>}
                     {session && <>
                         Add new images to {session.user.name}
-                        {/* <DragDrop uppy={uppy} /> */}
-                        {/* <ProgressBar
-                            uppy={uppy}
-                            fixed
-                            hideAfterFinish
-                        /> */}
                         <div className='uploader'>
                             <Dashboard
                                 uppy={uppy}

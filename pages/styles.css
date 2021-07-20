@@ -97,10 +97,10 @@ hr {
   border: 1px solid #ddd;
 }
 
-.uploader{
+/* .uploader{
   display: flex;
   justify-content: center;
-}
+} */
 
 iframe {
   background: #ccc;
