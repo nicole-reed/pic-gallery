@@ -15,10 +15,6 @@ export default function fullImage() {
         try {
             const res = await axios.get(`/api/images/${imageId}`)
 
-            if (!res) {
-                window.location.href = '/'
-            }
-
             setImage(res.data)
         } catch (error) {
             console.log(error.message)
