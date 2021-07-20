@@ -49,6 +49,11 @@ a:hover{
   opacity: .5;
   transition-duration: .5s;
 }
+@media(max-width: 700px){
+  a:hover{
+    opacity: 1;
+  }
+}
 
 .img-wrapper{
   position: relative;
