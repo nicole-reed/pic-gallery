@@ -82,6 +82,17 @@ a:hover{
   transition: all 0.2s ease-in;
 }
 
+.delete-btn{
+  border: none;
+  background: transparent;
+  color: white;
+  font-weight: lighter;
+  cursor: pointer;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+
+
 hr {
   border: 1px solid #ddd;
 }

@@ -28,6 +28,23 @@ const handler = async (req, res) => {
             console.log(error)
             res.status(500).send(error.message)
         }
+    }
+    if (req.method === 'DELETE') {
+        try {
+            const { imageId } = req.query
+            const image = await Image.findOne({ _id: imageId })
+            console.log('image', image)
+
+            if (!image) {
+                throw new Error(`image with _id ${id} does not exist`)
+            }
+
+            await image.deleteOne()
+
+            res.send('image successfully deleted')
+        } catch (error) {
+            console.log('unable to delete', error)
+        }
     } else {
         res.status(400).send('error', error.message)
     }

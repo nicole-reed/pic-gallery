@@ -36,7 +36,7 @@ export default function Profile() {
                 {session && <>
                     <h2>Images curated by {session.user.name}</h2>
                 </>}
-                <Images images={images} setImages={setImages} />
+                <Images images={images} setImages={setImages} showDelete={true} />
 
             </Layout>
         </div>
