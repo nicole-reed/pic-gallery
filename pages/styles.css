@@ -97,10 +97,10 @@ hr {
   border: 1px solid #ddd;
 }
 
-/* .uploader{
+.uppy-Dashboard{
   display: flex;
   justify-content: center;
-} */
+}
 
 iframe {
   background: #ccc;
