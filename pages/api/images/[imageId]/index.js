@@ -28,8 +28,7 @@ const handler = async (req, res) => {
             console.log(error)
             res.status(500).send(error.message)
         }
-    }
-    if (req.method === 'DELETE') {
+    } else if (req.method === 'DELETE') {
         try {
             const { imageId } = req.query
             const image = await Image.findOne({ _id: imageId })
