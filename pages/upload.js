@@ -76,6 +76,7 @@ export default function Upload() {
                                 metaFields={[
                                     { id: 'caption', name: 'Location', placeholder: 'where was this photo taken?' }
                                 ]}
+                                theme={'dark'}
                             />
                         </div>
 
