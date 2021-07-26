@@ -102,6 +102,10 @@ hr {
   justify-content: center;
 }
 
+.uppy-DragDrop-label{
+  color: black;
+}
+
 iframe {
   background: #ccc;
   border: 1px solid #ccc;
