@@ -10,9 +10,10 @@ import { ProgressBar } from '@uppy/react'
 import '@uppy/core/dist/style.css'
 import '@uppy/drag-drop/dist/style.css'
 import '@uppy/progress-bar/dist/style.css'
+import '@uppy/image-editor/dist/style.css'
 import '@uppy/dashboard/dist/style.css'
 import axios from 'axios'
-
+const ImageEditor = require('@uppy/image-editor')
 
 
 
@@ -21,12 +22,6 @@ export default function Upload() {
     console.log('session', session)
 
     const uppy = new Uppy({
-        // restrictions: {
-        //     maxFileSize: 300000,
-        //     maxNumberOfFiles: 1,
-        //     minNumberOfFiles: 1,
-        //     allowedFileTypes: ['image/*']
-        // },
         autoProceed: isMobile ? true : false,
         debug: true
     })
@@ -45,6 +40,33 @@ export default function Upload() {
                     }
                 }
             }
+        })
+        .use(ImageEditor, {
+            id: 'ImageEditor',
+            quality: 0.8,
+            cropperOptions: {
+                viewMode: 1,
+                background: false,
+                autoCropArea: 1,
+                responsive: true
+            },
+            actions: {
+                revert: true,
+                rotate: true,
+                granularRotate: true,
+                flip: true,
+                zoomIn: true,
+                zoomOut: true,
+                cropSquare: true,
+                cropWidescreen: true,
+                cropWidescreenVertical: true
+            }
+        })
+        .on('file-editor:start', (file) => {
+            console.log(file)
+        })
+        .on('file-editor:complete', (updatedFile) => {
+            console.log(updatedFile)
         })
         .on('file-added', () => console.log('file added'))
         .on('upload-success', async (file) => {
@@ -67,27 +89,18 @@ export default function Upload() {
                     </>}
                     {session && <>
                         Add new images to {session.user.name}
-                        <MobileView>
-                            <DragDrop className='drag-drop' uppy={uppy} />
-                            <ProgressBar
+
+                        <div className='uploader'>
+                            <Dashboard
                                 uppy={uppy}
-                                fixed
-                                hideAfterFinish
+                                plugins={['ImageEditor']}
+                                metaFields={[
+                                    { id: 'caption', name: 'Location', placeholder: 'where was this photo taken?' }
+                                ]}
+                                theme={'dark'}
                             />
-                        </MobileView>
-                        <BrowserView>
-                            <div className='uploader'>
-                                <Dashboard
-                                    uppy={uppy}
-                                    // width={'300'}
-                                    // height={'350'}
-                                    metaFields={[
-                                        { id: 'caption', name: 'Location', placeholder: 'where was this photo taken?' }
-                                    ]}
-                                    theme={'dark'}
-                                />
-                            </div>
-                        </BrowserView>
+                        </div>
+
 
                     </>}
 
